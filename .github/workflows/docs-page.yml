@@ -1,4 +1,4 @@
-name: Build & host the documentation on GitHub Pages
+name: Docs
 
 on:
   push:
