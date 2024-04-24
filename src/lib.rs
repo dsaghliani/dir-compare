@@ -58,7 +58,7 @@ impl Display for EntryError {
             EntryError::InvalidPath(path) => {
                 write!(
                     f,
-                    "{path:#?} is not a valid path. Cannot create an entry for the directory, `..`."
+                    "{path:?} is not a valid path. Cannot create an entry for the directory, `..`."
                 )
             }
             EntryError::IoError(error) => error.fmt(f),
