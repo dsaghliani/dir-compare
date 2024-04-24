@@ -67,13 +67,13 @@ impl From<io::Error> for EntryError {
 impl Display for EntryError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            EntryError::InvalidPath(path) => {
+            Self::InvalidPath(path) => {
                 write!(
                     f,
                     "{path:?} is not a valid path. Cannot create an entry for the directory, `..`."
                 )
             }
-            EntryError::IoError(error) => error.fmt(f),
+            Self::IoError(error) => error.fmt(f),
         }
     }
 }
