@@ -122,10 +122,11 @@ impl Content {
                 .map(|entry| {
                     Entry::at(entry?.path()).map_err(|e| match e {
                         EntryError::IoError(e) => e,
-                        EntryError::InvalidPath(_) => {
+                        EntryError::InvalidPath(path) => {
                             panic!(
                                 "`Content::of` returned `EntryError::InvalidPath`, which \
-                                    shouldn't happen. `std::fs::read_dir` should skip `..`."
+                                    shouldn't happen. `std::fs::read_dir` should skip `..`. \
+                                    Path: {path:?}."
                             );
                         }
                     })
