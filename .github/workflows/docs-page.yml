@@ -25,6 +25,7 @@ jobs:
       run: |
         cargo doc
         rm target/doc/.lock
+        cp utils/redirect.html target/doc/index.html
     
     - name: Set up Pages
       uses: actions/configure-pages@v5
