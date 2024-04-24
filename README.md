@@ -1,3 +1,5 @@
+![Docs](https://github.com/dsaghliani/dir-compare/actions/workflows/docs-page.yml/badge.svg)
+
 A simple, dependency-free crate for comparing a pair of files or directories—or their contents.
 Construct an [`Entry`] or [`Content`] of a file/directory at a given path and compare it with
 another as you would an ordinary Rust data structure; they implement [`PartialEq`] & [`Eq`].
