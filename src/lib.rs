@@ -39,6 +39,7 @@ pub struct Entry {
 /**
 The errors that may arise when constructing an [`Entry`].
 */
+#[derive(Debug)]
 pub enum EntryError {
     /// The given path ends with `..`.
     InvalidPath(PathBuf),
@@ -140,10 +141,26 @@ impl Content {
 
 #[cfg(test)]
 mod tests {
-    use crate::Content;
+    use crate::{Content, Entry};
 
     #[test]
-    fn should_eq() {
+    fn entries_should_eq() {
+        let a = Entry::at("fixtures/should-eq/dir-a").unwrap();
+        let b = Entry::at("fixtures/should-eq/dir-a").unwrap();
+
+        assert_eq!(a, b);
+    }
+
+    #[test]
+    fn entries_should_not_eq() {
+        let a = Entry::at("fixtures/should-eq/dir-a").unwrap();
+        let b = Entry::at("fixtures/should-eq/dir-b").unwrap();
+
+        assert_ne!(a, b);
+    }
+
+    #[test]
+    fn contents_should_eq() {
         let a = Content::of("fixtures/should-eq/dir-a").unwrap();
         let b = Content::of("fixtures/should-eq/dir-b").unwrap();
 
@@ -151,7 +168,7 @@ mod tests {
     }
 
     #[test]
-    fn should_not_eq() {
+    fn contents_should_not_eq() {
         let a = Content::of("fixtures/should-not-eq/dir-a").unwrap();
         let b = Content::of("fixtures/should-not-eq/dir-b").unwrap();
 
