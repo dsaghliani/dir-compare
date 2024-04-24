@@ -1,0 +1,39 @@
+name: Build & host the documentation on GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-and-deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v4
+      
+    - name: Install the toolchain
+      uses: dtolnay/rust-toolchain@stable
+      
+    - name: Build the documentation
+      run: |
+        cargo doc
+        rm target/doc/.lock
+    
+    - name: Set up Pages
+      uses: actions/configure-pages@v5
+    
+    - name: Upload the artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "./target/doc"
+
+    - name: Deploy to Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
