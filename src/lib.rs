@@ -24,6 +24,10 @@ assert_ne!(a, b);
 
 # Ok::<(), Box<dyn std::error::Error>>(())
 ```
+
+In exchange for the (implementation) simplicity, it loses speed. In particular, large directories
+may cause memory usage to balloon. dir-compare was designed for use in tests of applications that
+operate on the file system, so performance was not a priority.
 */
 
 use core::fmt;

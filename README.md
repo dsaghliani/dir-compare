@@ -23,3 +23,7 @@ let b = Entry::at("fixtures/equivalent/dir-b")?;
 // They have different names, so the comparison fails.
 assert_ne!(a, b);
 ```
+
+In exchange for the (implementation) simplicity, it loses speed. In particular, large directories
+may cause memory usage to balloon. dir-compare was designed for use in tests of applications that
+operate on the file system, so performance was not a priority.
