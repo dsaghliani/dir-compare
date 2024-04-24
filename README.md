@@ -1,4 +1,4 @@
-![Docs](https://github.com/dsaghliani/dir-compare/actions/workflows/docs-page.yml/badge.svg)
+[![Docs](https://github.com/dsaghliani/dir-compare/actions/workflows/docs-page.yml/badge.svg)](https://dsaghliani.github.io/dir-compare/)
 
 A simple, dependency-free crate for comparing a pair of files or directories—or their contents.
 Construct an [`Entry`] or [`Content`] of a file/directory at a given path and compare it with
